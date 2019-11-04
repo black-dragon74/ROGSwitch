@@ -8,6 +8,7 @@
 
 import Foundation
 
+@discardableResult
 func runShellCommand(_ command: String, args: [String]) -> String? {
     
     let task = Process()

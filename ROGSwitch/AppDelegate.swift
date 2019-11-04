@@ -22,10 +22,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.toolTip = "Turn keyobard lights on or off"
             button.image = NSImage(named: "rog_insignia")
             button.action = #selector(handleOnOff(_:))
+            button.sendAction(on: [.rightMouseUp, .leftMouseUp])
         }
         
         // Turn on the lights
-        _ = runShellCommand("/usr/bin/aura", args: ["on"])
+        runShellCommand("/usr/bin/aura", args: ["on"])
         
     }
 
@@ -34,13 +35,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc fileprivate func handleOnOff(_ sender: Any?) {
+
+        // Allow green light on right click
+        if let event = NSApp.currentEvent {
+            if event.type == .rightMouseUp {
+                runShellCommand("/usr/bin/aura", args: ["green"])
+                return
+            }
+        }
+        
         if (kbdLightOn) {
             // Turn off
-             _ = runShellCommand("/usr/bin/aura", args: ["off"])
+             runShellCommand("/usr/bin/aura", args: ["off"])
         }
         else {
             // Turn on
-            _ = runShellCommand("/usr/bin/aura", args: ["on"])
+            runShellCommand("/usr/bin/aura", args: ["on"])
         }
 
         kbdLightOn = !kbdLightOn
