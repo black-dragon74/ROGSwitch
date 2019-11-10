@@ -40,6 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let event = NSApp.currentEvent {
             if event.type == .rightMouseUp {
                 runShellCommand("/usr/bin/aura", args: ["green"])
+                kbdLightOn = !kbdLightOn
                 return
             }
         }
