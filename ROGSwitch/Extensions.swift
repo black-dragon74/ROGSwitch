@@ -11,6 +11,10 @@ import Foundation
 @discardableResult
 func runShellCommand(_ command: String, args: [String]) -> String? {
     
+    #if DEBUG
+    print("Running: \(command) with args: \(args)")
+    #endif
+    
     let task = Process()
     task.executableURL = URL(fileURLWithPath: command)
     task.arguments = args
@@ -29,11 +33,11 @@ func runShellCommand(_ command: String, args: [String]) -> String? {
     let data = pipe.fileHandleForReading.readDataToEndOfFile()
     let output = String(data: data, encoding: .utf8)
     
-    task.waitUntilExit()
-    
     #if DEBUG
-    print("Command: \(command), output: \(output ?? "")")
+    print("Output: \(output ?? "")")
     #endif
+    
+    task.waitUntilExit()
     
     return output
 }

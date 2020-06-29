@@ -93,7 +93,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = Nick;
 				TargetAttributes = {
 					01B46C482370925000E40D4A = {
@@ -274,8 +274,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ROGSwitch/ROGSwitch.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.0;
 				DEVELOPMENT_TEAM = LUPK75PW6Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ROGSwitch/Info.plist;
@@ -283,6 +285,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.black-dragon74.ROGSwitch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -294,8 +297,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ROGSwitch/ROGSwitch.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.0;
 				DEVELOPMENT_TEAM = LUPK75PW6Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ROGSwitch/Info.plist;
@@ -303,6 +308,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.black-dragon74.ROGSwitch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
