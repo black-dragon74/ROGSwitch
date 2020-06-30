@@ -83,7 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // App State restoration will take place in 3 steps
         // - Restore the illuminated state
         // - Restore the color state
-        // - Redtore the lux state
+        // - Restore the lux state
         
         // As every function call changes the appState, we copy the state before any calls
         let copyState = appState
@@ -150,10 +150,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         // Otherwise, turn on the keyboard lights full brightness
-        runShellCommand(rogAuraCore, args: ["on"])
         appState.luxLevel = 3
+        runShellCommand(rogAuraCore, args: ["brightness", "\(appState.luxLevel)"])
         appState.isIlluminated = true
-        appState.currentColor = .red
         saveValuesToDB()
     }
     
@@ -163,8 +162,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         // Otherwise, turn off kbd lights
-        runShellCommand(rogAuraCore, args: ["off"])
         appState.luxLevel = 0
+        runShellCommand(rogAuraCore, args: ["brightness", "\(appState.luxLevel)"])
         appState.isIlluminated = false
         saveValuesToDB()
     }
