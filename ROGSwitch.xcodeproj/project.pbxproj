@@ -15,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0176196424C78372007D4278 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		01B46C492370925000E40D4A /* ROGSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ROGSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B46C4C2370925000E40D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01B46C4E2370925000E40D4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +40,7 @@
 		01B46C402370925000E40D4A = {
 			isa = PBXGroup;
 			children = (
+				0176196424C78372007D4278 /* README.md */,
 				01B46C4B2370925000E40D4A /* ROGSwitch */,
 				01B46C4A2370925000E40D4A /* Products */,
 			);
