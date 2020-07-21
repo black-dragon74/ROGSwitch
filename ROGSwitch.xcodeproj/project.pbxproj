@@ -82,6 +82,8 @@
 			dependencies = (
 			);
 			name = ROGSwitch;
+			packageProductDependencies = (
+			);
 			productName = ROGSwitch;
 			productReference = 01B46C492370925000E40D4A /* ROGSwitch.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +112,8 @@
 				Base,
 			);
 			mainGroup = 01B46C402370925000E40D4A;
+			packageReferences = (
+			);
 			productRefGroup = 01B46C4A2370925000E40D4A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,7 +281,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.1;
+				CURRENT_PROJECT_VERSION = 2.2;
 				DEVELOPMENT_TEAM = LUPK75PW6Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ROGSwitch/Info.plist;
@@ -285,7 +289,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.black-dragon74.ROGSwitch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -300,7 +304,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.1;
+				CURRENT_PROJECT_VERSION = 2.2;
 				DEVELOPMENT_TEAM = LUPK75PW6Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ROGSwitch/Info.plist;
@@ -308,7 +312,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.black-dragon74.ROGSwitch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

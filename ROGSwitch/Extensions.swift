@@ -39,5 +39,11 @@ func runShellCommand(_ command: String, args: [String]) -> String? {
     
     task.waitUntilExit()
     
-    return output
+    return output?.trimmingCharacters(in: .whitespacesAndNewlines)
+}
+
+extension String {
+    func isEqualTo(other: String) -> Bool {
+        return String(format: self) == String(format: other)
+    }
 }
