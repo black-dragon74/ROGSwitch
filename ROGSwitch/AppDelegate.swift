@@ -20,7 +20,7 @@ enum ROGSwitchColors: Int, Codable {
 
 struct ROGSwitchState: Codable {
     var isIlluminated: Bool
-//    var luxLevel: Int
+    var luxLevel: Int
     var currentColor: ROGSwitchColors
 }
 
@@ -28,7 +28,7 @@ struct ROGSwitchState: Codable {
 class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     
-    private var appState = ROGSwitchState(isIlluminated: true, currentColor: .red)
+    private var appState = ROGSwitchState(isIlluminated: true, luxLevel: 3, currentColor: .red)
     
     private let DEFAULT_KEY = "ROGSwitchState"
     private let rogAuraCore = "/usr/local/bin/macRogAuraCore"
@@ -125,13 +125,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     fileprivate func buildMenu() {
         let menu = NSMenu()
         
-//        menu.addItem(NSMenuItem(title: "Turn lights on", action: #selector(handleKbdOn), keyEquivalent: ""))
-//        menu.addItem(NSMenuItem(title: "Turn lights off", action: #selector(handleKbdOff), keyEquivalent: ""))
-//        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "Turn lights on", action: #selector(handleKbdOn), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Turn lights off", action: #selector(handleKbdOff), keyEquivalent: ""))
+        menu.addItem(NSMenuItem.separator())
         
-//        menu.addItem(NSMenuItem(title: "Increase brightness", action: #selector(handleBrightnessUp), keyEquivalent: ""))
-//        menu.addItem(NSMenuItem(title: "Decrease Brightness", action: #selector(handleBrightnessDown), keyEquivalent: ""))
-//        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "Increase brightness", action: #selector(handleBrightnessUp), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Decrease Brightness", action: #selector(handleBrightnessDown), keyEquivalent: ""))
+        menu.addItem(NSMenuItem.separator())
         
         menu.addItem(NSMenuItem(title: "Turn lights red", action: #selector(handleRed), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Turn lights green", action: #selector(handleGreen), keyEquivalent: ""))
@@ -147,6 +147,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(NSMenuItem(title: "Quit ROGSwitch", action: #selector(NSApplication.terminate(_:)), keyEquivalent: ""))
         
         statusItem.menu = menu
+        
+        
+        runShellCommand(rogAuraCore, args: ["initialize_keyboard"])
     }
     
     fileprivate func buildErrorMenu() {
@@ -161,51 +164,51 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.menu = errorMenu
     }
     
-//    @objc fileprivate func handleKbdOn() {
-//        if appState.isIlluminated {
-//            return
-//        }
-//
-//        // Otherwise, turn on the keyboard lights full brightness
-//        appState.luxLevel = 3
-//        runShellCommand(rogAuraCore, args: ["brightness", "\(appState.luxLevel)"])
-//        appState.isIlluminated = true
-//        saveValuesToDB()
-//    }
+    @objc fileprivate func handleKbdOn() {
+        if appState.isIlluminated {
+            return
+        }
+
+        // Otherwise, turn on the keyboard lights full brightness
+        appState.luxLevel = 3
+        runShellCommand(rogAuraCore, args: ["brightness", "\(appState.luxLevel)"])
+        appState.isIlluminated = true
+        saveValuesToDB()
+    }
     
-//    @objc fileprivate func handleKbdOff() {
-//        if !appState.isIlluminated {
-//            return
-//        }
-//
-//        // Otherwise, turn off kbd lights
-//        appState.luxLevel = 0
-//        runShellCommand(rogAuraCore, args: ["brightness", "\(appState.luxLevel)"])
-//        appState.isIlluminated = false
-//        saveValuesToDB()
-//    }
+    @objc fileprivate func handleKbdOff() {
+        if !appState.isIlluminated {
+            return
+        }
+
+        // Otherwise, turn off kbd lights
+        appState.luxLevel = 0
+        runShellCommand(rogAuraCore, args: ["brightness", "\(appState.luxLevel)"])
+        appState.isIlluminated = false
+        saveValuesToDB()
+    }
     
-//    @objc fileprivate func handleBrightnessUp() {
-//        if appState.luxLevel >= 3 {
-//            return
-//        }
-//
-//        appState.luxLevel += 1
-//        runShellCommand(rogAuraCore, args: ["brightness", "\(appState.luxLevel)"])
-//        appState.isIlluminated = true
-//        saveValuesToDB()
-//    }
-    
-//    @objc fileprivate func handleBrightnessDown() {
-//        if appState.luxLevel <= 0 {
-//            return
-//        }
-//
-//        appState.luxLevel -= 1
-//        runShellCommand(rogAuraCore, args: ["brightness", "\(appState.luxLevel)"])
-//        appState.isIlluminated = appState.luxLevel != 0
-//        saveValuesToDB()
-//    }
+    @objc fileprivate func handleBrightnessUp() {
+        if appState.luxLevel >= 3 {
+            return
+        }
+
+        appState.luxLevel += 1
+        runShellCommand(rogAuraCore, args: ["brightness", "\(appState.luxLevel)"])
+        appState.isIlluminated = true
+        saveValuesToDB()
+    }
+  
+    @objc fileprivate func handleBrightnessDown() {
+        if appState.luxLevel <= 0 {
+            return
+        }
+
+        appState.luxLevel -= 1
+        runShellCommand(rogAuraCore, args: ["brightness", "\(appState.luxLevel)"])
+        appState.isIlluminated = appState.luxLevel != 0
+        saveValuesToDB()
+    }
     
     @objc fileprivate func handleRed() {
         runShellCommand(rogAuraCore, args: ["red"])
